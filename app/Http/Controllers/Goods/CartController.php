@@ -87,7 +87,6 @@ class CartController extends Controller
             $cartData = CartModel::where($where)->get();
             if(count($cartData)){
                 $cartData = CartModel::join('goods','goods.goods_id','=','shop_cart.goods_id')->where(['user_id'=>$token['id'],'cart_status'=>1])->first()->toArray();
-                var_dump($cartData);die;
                 $success = [
                     'code' => 200,
                     'msg' => 'success',
