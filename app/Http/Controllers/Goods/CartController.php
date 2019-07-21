@@ -35,7 +35,7 @@ class CartController extends Controller
                 if($arr){
                     $success = [
                         'code' => 200,
-                        'msg' => 'success',
+                        'msg' => 'success 添加成功请等待跳转',
                         'data' => []
                     ];
                     echo json_encode($success,JSON_UNESCAPED_UNICODE);die;
@@ -52,7 +52,7 @@ class CartController extends Controller
                 if($res){
                     $success = [
                         'code' => 200,
-                        'msg' => 'success',
+                        'msg' => 'success 添加成功请等待跳转',
                         'data' => []
                     ];
                     echo json_encode($success,JSON_UNESCAPED_UNICODE);die;
@@ -73,8 +73,26 @@ class CartController extends Controller
             ];
             echo json_encode($error,JSON_UNESCAPED_UNICODE);die;
         }
-
-
-
+    }
+    public function cart(Request $request){
+        $cookie = $request->cookie;
+        if($cookie) {
+            //var_dump($cookie);die;
+            $decrypt_token = decrypt($cookie);
+            $token = unserialize($decrypt_token);
+            $where = [
+                'user_id' => $token['id'],
+                'cart_status' => 1
+            ];
+            $cartData = CartModel::where($where)->get();
+            var_dump($cartData);
+        }else{
+            $error = [
+                'code' => 5000,
+                'msg' => '请先登录',
+                'data' => []
+            ];
+            echo json_encode($error,JSON_UNESCAPED_UNICODE);die;
+        }
     }
 }

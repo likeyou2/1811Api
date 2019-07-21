@@ -57,6 +57,7 @@ Route::post('/login/login','Login\LoginController@login');  //登录
 Route::post('/index/index','Index\IndexController@index');  //首页
 Route::post('/goods/details','Goods\GoodsController@details');  //商品详情页
 Route::post('/goods/addCart','Goods\CartController@addCart');  //加入购物车详情页
+Route::post('/goods/cart','Goods\CartController@cart');  //加入购物车详情页
 
 
 
