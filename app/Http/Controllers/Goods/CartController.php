@@ -85,7 +85,17 @@ class CartController extends Controller
                 'cart_status' => 1
             ];
             $cartData = CartModel::where($where)->get();
-            var_dump($cartData);
+            if(count($cartData)){
+                $cartData = CartModel::where($where)->get()->toArray();
+                $success = [
+                    'code' => 200,
+                    'msg' => 'success',
+                    'data' => [
+                        'cartData'=>$cartData
+                    ]
+                ];
+                echo json_encode($success,JSON_UNESCAPED_UNICODE);die;
+            }
         }else{
             $error = [
                 'code' => 5000,
