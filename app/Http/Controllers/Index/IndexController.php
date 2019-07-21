@@ -16,7 +16,6 @@ class IndexController extends Controller
         if($type == 'type_cookie'){  //类型等于cookie 就
             if($cookie){
                 //$cookie = substr($cookie,10);
-                var_dump($cookie);die;
                 $decrypt_token = decrypt($cookie);
                 $token = unserialize($decrypt_token);
                 //var_dump($token);die;
