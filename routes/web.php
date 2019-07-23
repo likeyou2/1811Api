@@ -39,7 +39,7 @@ Route::get('/test/privateKey','Test\TestController@privateKey');  //测试 私�
 
 Route::post('/exam/login','Exam\ExamController@login');  //周考 登录接口
 Route::post('/exam/quit','Exam\ExamController@quit');  //周考 退出接口
-
+Route::get('/exam/kick','Exam\KickController@kick');  //周考 互踢功能
 
 
 
