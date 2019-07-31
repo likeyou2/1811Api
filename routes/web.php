@@ -36,10 +36,15 @@ Route::get('/test/publicKey','Test\TestController@publicKey');  //测试 公钥�
 Route::get('/test/privateKey','Test\TestController@privateKey');  //测试 私钥解密数据
 
 
+Route::get('/test/testLogin','Test\LoginTestController@testLogin');  //测试 私钥解密数据
+Route::post('/test/testLoginDo','Test\LoginTestController@testLoginDo');  //测试 私钥解密数据
+
 
 Route::post('/exam/login','Exam\ExamController@login');  //周考 登录接口
 Route::post('/exam/quit','Exam\ExamController@quit');  //周考 退出接口
 Route::get('/exam/kick','Exam\KickController@kick');  //周考 互踢功能
+Route::get('/exam/face','Exam\ExamController@face');  //考
+Route::get('/exam/facedata','Exam\ExamController@faceData');  //考
 
 
 

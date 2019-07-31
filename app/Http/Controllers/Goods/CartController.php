@@ -105,5 +105,6 @@ class CartController extends Controller
             ];
             echo json_encode($error,JSON_UNESCAPED_UNICODE);die;
         }
+
     }
 }

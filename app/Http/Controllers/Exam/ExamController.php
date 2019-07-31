@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Exam;
 
 use App\Model\StudentModel;
+use App\Model\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
@@ -138,5 +139,24 @@ class ExamController extends Controller
         ];
         echo json_encode($request,JSON_UNESCAPED_UNICODE);die;
 
+    }
+
+    public function face(){
+        return view('exam.face');
+    }
+
+    public function faceData(Request $request){
+        $page = $request->page;
+        $limit = $request->limit;
+        $page = ($page -1 )* $limit
+
+        $userData = UserModel::offset($page)->limit($limit)->get();
+        $arr = [
+            'code' => 0,
+            'msg' => '',
+            'count' => 1000,
+            'data' => $userData
+        ];
+        return $arr;
     }
 }
